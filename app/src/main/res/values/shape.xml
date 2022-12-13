@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="ShapeAppearance.Tmdb.SmallComponent" parent="ShapeAppearance.MaterialComponents.SmallComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">@dimen/space_5x</item>
+    </style>
+
+    <style name="ShapeAppearance.Tmdb.MediumComponent" parent="ShapeAppearance.MaterialComponents.MediumComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">@dimen/space_2x</item>
+    </style>
+
+    <style name="ShapeAppearance.Tmdb.LargeComponent" parent="ShapeAppearance.MaterialComponents.LargeComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">@dimen/space_2x</item>
+    </style>
+
+    <style name="ShapeAppearance.Tmdb.PosterImageView" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">@dimen/default_card_corner_radius</item>
+    </style>
+
+</resources>

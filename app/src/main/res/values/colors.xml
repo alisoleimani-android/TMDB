@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="color_primary">@color/purple_500</color>
+    <color name="color_primary_variant">@color/deep_purple_700</color>
+    <color name="color_secondary">@color/purple_500</color>
+    <color name="color_secondary_variant">@color/deep_purple_700</color>
+    <color name="color_background">@color/grey_100</color>
+    <color name="color_surface">@color/grey_100</color>
+    <color name="color_error">@color/pink_800</color>
+    <color name="color_on_primary">@color/white</color>
+    <color name="color_on_secondary">@color/white</color>
+    <color name="color_on_background">@color/black</color>
+    <color name="color_on_surface">@color/black</color>
+    <color name="color_on_error">@color/white</color>
+</resources>

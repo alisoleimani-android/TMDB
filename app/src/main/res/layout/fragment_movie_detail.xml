@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".movie.detail.presentation.MovieDetailFragment">
+
+    <data>
+
+        <variable
+            name="uiState"
+            type="com.zenjob.android.tmdb.movie.detail.presentation.MovieDetailUiState" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:navigationIcon="@drawable/ic_back"
+            app:navigationIconTint="?colorOnPrimary"
+            app:title="@{uiState.movie.title}"
+            app:titleCentered="true" />
+
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/swipe_to_refresh"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/toolbar"
+            app:refreshing="@{uiState.loading}">
+
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fillViewport="true">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="@dimen/space_4x"
+                    app:visibleIf="@{uiState.movie != null}">
+
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:id="@+id/iv_movie"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        app:imageUrl="@{uiState.movie.posterPath}"
+                        app:layout_constraintDimensionRatio="w,6:4"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintWidth_percent="0.55"
+                        app:shapeAppearanceOverlay="@style/ShapeAppearance.Tmdb.PosterImageView"
+                        tools:scaleType="centerCrop"
+                        tools:src="@drawable/img_test" />
+
+                    <TextView
+                        android:id="@+id/tv_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/space_2x"
+                        android:text="@{uiState.movie.title}"
+                        android:textAppearance="?textAppearanceHeadline5"
+                        android:textColor="@color/material_on_background_emphasis_high_type"
+                        app:layout_constraintTop_toBottomOf="@id/iv_movie"
+                        tools:text="This is title" />
+
+                    <TextView
+                        android:id="@+id/tv_vote"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/space_base"
+                        android:layout_marginTop="@dimen/space_half_base"
+                        android:text="@{String.valueOf(uiState.movie.voteAverage)}"
+                        android:textAppearance="?textAppearanceSubtitle2"
+                        android:textColor="@color/material_on_background_emphasis_medium"
+                        app:layout_constraintStart_toEndOf="@id/iv_vote"
+                        app:layout_constraintTop_toBottomOf="@id/tv_title"
+                        tools:text="6.715" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/iv_vote"
+                        android:layout_width="@dimen/space_4x"
+                        android:layout_height="@dimen/space_4x"
+                        app:layout_constraintBottom_toBottomOf="@id/tv_vote"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/tv_vote"
+                        app:layout_constraintVertical_bias="0.3"
+                        app:srcCompat="@drawable/ic_rate"
+                        app:tint="?colorOnSurface" />
+
+                    <TextView
+                        android:id="@+id/tv_release_date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/space_half_base"
+                        android:text="@{uiState.movie.releaseDate}"
+                        android:textAppearance="?textAppearanceSubtitle2"
+                        android:textColor="@color/material_on_background_disabled"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tv_title"
+                        tools:text="2022-02-12" />
+
+                    <TextView
+                        android:id="@+id/tv_overview"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/space_4x"
+                        android:text="@{uiState.movie.overview}"
+                        android:textAppearance="?textAppearanceBody1"
+                        android:textColor="@color/material_on_background_emphasis_medium"
+                        app:layout_constraintTop_toBottomOf="@id/tv_vote"
+                        tools:text="This could be a long description" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.core.widget.NestedScrollView>
+
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

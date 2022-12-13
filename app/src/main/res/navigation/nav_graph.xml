@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/popularMoviesFragment">
+
+    <fragment
+        android:id="@+id/popularMoviesFragment"
+        android:name="com.zenjob.android.tmdb.movie.popular.presentation.PopularMoviesFragment"
+        android:label="fragment_movie_list"
+        tools:layout="@layout/fragment_popular_movies">
+
+        <action
+            android:id="@+id/action_popularMoviesFragment_to_movieDetailFragment"
+            app:destination="@id/movieDetailFragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/movieDetailFragment"
+        android:name="com.zenjob.android.tmdb.movie.detail.presentation.MovieDetailFragment"
+        android:label="fragment_movie_detail"
+        tools:layout="@layout/fragment_movie_detail">
+
+        <argument
+            android:name="movieId"
+            app:argType="long" />
+
+    </fragment>
+
+</navigation>

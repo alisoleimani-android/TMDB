@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="uiMovie"
+            type="com.zenjob.android.tmdb.common.presentation.model.UiMovie" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/space_base"
+        android:layout_marginVertical="@dimen/space_2x"
+        android:orientation="vertical">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/iv_movie"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/default_card_size"
+            app:imageUrl="@{uiMovie.posterPath}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearanceOverlay="@style/ShapeAppearance.Tmdb.PosterImageView"
+            tools:src="@drawable/img_test" />
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_base"
+            android:gravity="center"
+            android:text="@{uiMovie.title}"
+            android:textAppearance="?textAppearanceSubtitle1"
+            android:textColor="@color/material_on_surface_emphasis_high_type"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/iv_movie"
+            tools:text="Title" />
+
+        <TextView
+            android:id="@+id/tv_vote"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_half_base"
+            android:text="@{String.valueOf(uiMovie.voteAverage)}"
+            android:textAppearance="?textAppearanceSubtitle2"
+            android:textColor="@color/material_on_surface_emphasis_medium"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_title"
+            tools:text="6.715" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="@dimen/space_4x"
+            android:layout_height="@dimen/space_4x"
+            android:layout_marginHorizontal="@dimen/space_half_base"
+            app:layout_constraintBottom_toBottomOf="@id/tv_vote"
+            app:layout_constraintEnd_toStartOf="@id/tv_vote"
+            app:layout_constraintTop_toTopOf="@id/tv_vote"
+            app:layout_constraintVertical_bias="0.3"
+            app:srcCompat="@drawable/ic_rate"
+            app:tint="?colorOnSurface" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
